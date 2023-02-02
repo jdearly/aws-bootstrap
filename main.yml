@@ -234,18 +234,9 @@ Resources:
             nvm install v12.7.0
             nvm use v12.7.0
 
-            # Download latest code, unzip it into /home/ec2-user/app
-            #wget https://github.com/Josh/aws-bootstrap/archive/master.zip 
-            #unzip master.zip
-            #mv aws-bootstrap-master app
-
             # Create log directory
             mkdir -p /home/ec2-user/app/logs
 
-            # Run server
-            #cd app
-            #npm install
-            #npm start
           EOF
 
           chown ec2-user:ec2-user /tmp/install_script.sh && chmod a+x /tmp/install_script.sh
