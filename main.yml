@@ -17,7 +17,7 @@ Parameters:
     Description: 'The source GitHub repo name (without the username).'
   GitHubBranch:
     Type: String
-    Default: main
+    Default: master
     Description: 'The source GitHub branch.'
   GitHubPersonalAccessToken:
     Type: String
@@ -25,7 +25,9 @@ Parameters:
     Description: 'A GitHub personal access token with "repo" and
 "admin:repo_hook" permissions.'
 
+
 Resources:
+
   SecurityGroup:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
@@ -234,9 +236,18 @@ Resources:
             nvm install v12.7.0
             nvm use v12.7.0
 
+            # Download latest code, unzip it into /home/ec2-user/app
+            #wget https://github.com/{{username}}/aws-bootstrap/archive/master.zip 
+            #unzip master.zip
+            #mv aws-bootstrap-master app
+
             # Create log directory
             mkdir -p /home/ec2-user/app/logs
 
+            # Run server
+            #cd app
+            #npm install
+            #npm start
           EOF
 
           chown ec2-user:ec2-user /tmp/install_script.sh && chmod a+x /tmp/install_script.sh
